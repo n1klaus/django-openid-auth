@@ -1,0 +1,279 @@
+{
+	"info": {
+		"_postman_id": "de4f1a50-2778-405d-8493-cbdf4a11c50c",
+		"name": "CUSTOMERS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23654809",
+		"_collection_link": "https://www.postman.com/n1klaus/workspace/django-openid-auth/collection/23654809-de4f1a50-2778-405d-8493-cbdf4a11c50c?action=share&source=collection_link&creator=23654809"
+	},
+	"item": [
+		{
+			"name": "OPTIONS",
+			"item": [
+				{
+					"name": "CHECK customers list",
+					"request": {
+						"method": "OPTIONS",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/customers/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"customers",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CHECK customer instance",
+					"request": {
+						"method": "OPTIONS",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/customers/{{customer_id}}/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"customers",
+								"{{customer_id}}",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CHECK customer's orders",
+					"request": {
+						"method": "OPTIONS",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/customers/{{customer_id}}/orders/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"customers",
+								"{{customer_id}}",
+								"orders",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "GET all customers",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/customers",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"customers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET one customer",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/customers/{{customer_id}}/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"customers",
+						"{{customer_id}}",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET customer's orders",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/customers/{{customer_id}}/orders/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"customers",
+						"{{customer_id}}",
+						"orders",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE a customer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"bernardo@email.com\",\n  \"phone\": \"+254701234567\",\n  \"first_name\": \"bernardo\",\n  \"last_name\": \"silva\",\n  \"password\": \"12345678\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/customers/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"customers",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE a customer",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"bernardosilva@email.com\",\n  \"phone\": \"+254701234567\",\n  \"first_name\": \"bernardo\",\n  \"last_name\": \"silva\",\n  \"password\": \"12345678\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/customers/{{customer_id}}/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"customers",
+						"{{customer_id}}",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH a customer",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"password\": \"123456787t72t3t23\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/customers/{{customer_id}}/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"customers",
+						"{{customer_id}}",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE a customer",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/customers/{{customer_id}}/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"customers",
+						"{{customer_id}}",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8000",
+			"type": "string"
+		},
+		{
+			"key": "customer_id",
+			"value": "1",
+			"type": "string"
+		},
+		{
+			"key": "order_id",
+			"value": "1",
+			"type": "string"
+		}
+	]
+}

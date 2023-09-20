@@ -1,0 +1,228 @@
+{
+	"info": {
+		"_postman_id": "981b1386-96c2-411c-a055-aedabfbf131c",
+		"name": "ORDERS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23654809",
+		"_collection_link": "https://www.postman.com/n1klaus/workspace/django-openid-auth/collection/23654809-981b1386-96c2-411c-a055-aedabfbf131c?action=share&source=collection_link&creator=23654809"
+	},
+	"item": [
+		{
+			"name": "OPTIONS",
+			"item": [
+				{
+					"name": "CHECK orders list",
+					"request": {
+						"method": "OPTIONS",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/orders/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"orders",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CHECK order instance",
+					"request": {
+						"method": "OPTIONS",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/orders/{{order_id}}/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"orders",
+								"{{order_id}}",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "GET all orders",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/orders",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET one order",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/orders/{{order_id}}/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"orders",
+						"{{order_id}}",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE an order",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"item\": \"signed nago\",\n  \"amount\": \"162.15\",\n  \"customer\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/orders/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"orders",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE an order",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"item\": \"signed shirt\",\n  \"amount\": \"5000.15\",\n  \"customer\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/orders/{{order_id}}/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"orders",
+						"{{order_id}}",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH an order",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"amount\": \"6000.15\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/orders/{{order_id}}/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"orders",
+						"{{order_id}}",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE an order",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/orders/{{order_id}}/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"orders",
+						"{{order_id}}",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8000",
+			"type": "string"
+		},
+		{
+			"key": "customer_id",
+			"value": "1",
+			"type": "string"
+		},
+		{
+			"key": "order_id",
+			"value": "1",
+			"type": "string"
+		}
+	]
+}
