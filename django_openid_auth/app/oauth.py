@@ -9,7 +9,6 @@ from django.shortcuts import render
 from django.urls import reverse
 
 oauth = OAuth()
-
 oauth.register(
     "auth0",
     client_id=settings.AUTH0_CLIENT_ID,
@@ -35,25 +34,22 @@ def callback(request):
 
 def logout(request):
     request.session.clear()
-
     return redirect(
-        f"https://{settings.AUTH0_DOMAIN}/v2/logout?"
-        + urlencode(
-            {
-                "returnTo": request.build_absolute_uri(reverse("oauth_index")),
-                "client_id": settings.AUTH0_CLIENT_ID,
-            },
-            quote_via=quote_plus,
-        ),
+        "https://{}/v2/logout?{}".format(
+            settings.AUTH0_DOMAIN,
+            urlencode(
+                {
+                    "returnTo": request.build_absolute_uri(reverse("oauth_index")),
+                    "client_id": settings.AUTH0_CLIENT_ID,
+                },
+                quote_via=quote_plus,
+            ),
+        )
     )
 
 
 def oauth_index(request):
+    session_user = json.dumps(request.session.get("user"), indent=4)
     return render(
-        request,
-        "oauth.html",
-        context={
-            "session": request.session.get("user"),
-            "pretty": json.dumps(request.session.get("user"), indent=4),
-        },
+        request, "oauth.html", context={"session": session_user, "pretty": session_user}
     )

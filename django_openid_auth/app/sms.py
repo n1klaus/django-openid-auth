@@ -17,6 +17,8 @@ def notify_customer(request, data=None):
             data: dict = json.loads(request.body)
         message = data.get("message", settings.DEFAULT_SMS_MESSAGE)
         recipients = data.get("recipients")
+        if not isinstance(message, str) and isinstance(recipients, list):
+            return HttpResponse(status=400)
         sms = africastalking.SMS
         response = sms.send(
             message=message,
@@ -26,7 +28,7 @@ def notify_customer(request, data=None):
         json_response = json.dumps(response)
         return json_response
     except Exception:
-        raise
+        return HttpResponse(status=500)
 
 
 def send_sms(request, data=None):
@@ -35,4 +37,4 @@ def send_sms(request, data=None):
             json_response = notify_customer(request, data)
             return HttpResponse(json_response, content_type="application/json")
         except Exception:
-            raise
+            return HttpResponse(status=405)
