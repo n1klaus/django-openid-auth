@@ -159,6 +159,8 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+DEFAULT_SMS_MESSAGE = "Order Received! We'll get back to you by the end of the day to provide you with more details."
+
 # Load Auth0 application settings into memory
 AUTH0_DOMAIN = os.environ.get("AUTH0_DOMAIN")
 AUTH0_CLIENT_ID = os.environ.get("AUTH0_CLIENT_ID")
@@ -177,3 +179,8 @@ LOGIN_REDIRECT_URL = "http://localhost:8000/openid_home"
 LOGOUT_REDIRECT_URL = "http://localhost:8000/openid_home"
 OIDC_RENEW_ID_TOKEN_EXPIRY_SECONDS = 60 * 60
 OIDC_OP_JWKS_ENDPOINT = f"https://{AUTH0_DOMAIN}/.well-known/jwks.json"
+
+# Africastalking configuration
+AFRICASTALKING_USERNAME = os.environ.get("AFRICASTALKING_USERNAME")
+AFRICASTALKING_API_KEY = os.environ.get("AFRICASTALKING_API_KEY")
+AFRICASTALKING_SENDER_ID = os.environ.get("AFRICASTALKING_SENDER_ID")
