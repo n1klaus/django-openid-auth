@@ -47,8 +47,20 @@ bandit --recursive django_openid_auth
 python manage.py test
 ```
 
-## Running the Server
+# Running the Server
 ``` bash
 python manage.py migrate
 python manage.py runserver
+```
+
+# Running the Server with Docker
+``` Bash
+# Build the image
+docker build -t app:latest .
+# Run a container from the image
+docker run -d --name django-heroku -e "PORT=8000" -e "DEBUG=1" -p 8000:8000 app:latest
+# Stop the container
+docker stop django-heroku
+# Remove the container
+docker rm django-heroku
 ```
