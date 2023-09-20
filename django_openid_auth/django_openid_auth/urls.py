@@ -1,4 +1,5 @@
 import app.oauth as oauth
+import app.openid as openid
 from app.views import CustomerOrdersView
 from app.views import CustomersView
 from app.views import OrdersView
@@ -23,4 +24,6 @@ urlpatterns = [
     path("login", oauth.login, name="login"),
     path("logout", oauth.logout, name="logout"),
     path("callback", oauth.callback, name="callback"),
+    path("oidc/", include("mozilla_django_oidc.urls")),
+    path("openid_home", openid.openid_index, name="openid_index"),
 ]

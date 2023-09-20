@@ -42,6 +42,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
+    "mozilla_django_oidc",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
@@ -57,6 +58,11 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+]
+
+AUTHENTICATION_BACKENDS = [
+    "app.openid.MyOpenIdConnectBackend",
+    "django.contrib.auth.backends.ModelBackend",
 ]
 
 ROOT_URLCONF = "django_openid_auth.urls"
@@ -112,6 +118,24 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {
+        "standard": {"format": "%(asctime)s [%(levelname)s] %(name)s: %(message)s"},
+    },
+    "handlers": {
+        "file": {
+            "level": "INFO",
+            "class": "logging.FileHandler",
+            "filename": os.path.join(BASE_DIR, "openid.log"),
+            "formatter": "standard",
+        },
+    },
+    "loggers": {
+        "mozilla_django_oidc": {"handlers": ["file"], "level": "DEBUG"},
+    },
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
@@ -139,3 +163,17 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 AUTH0_DOMAIN = os.environ.get("AUTH0_DOMAIN")
 AUTH0_CLIENT_ID = os.environ.get("AUTH0_CLIENT_ID")
 AUTH0_CLIENT_SECRET = os.environ.get("AUTH0_CLIENT_SECRET")
+
+# OpenID Connect settings with Auth0
+OIDC_RP_CLIENT_ID = AUTH0_CLIENT_ID
+OIDC_RP_CLIENT_SECRET = AUTH0_CLIENT_SECRET
+OIDC_OP_AUTHORIZATION_ENDPOINT = f"https://{AUTH0_DOMAIN}/authorize"
+OIDC_OP_TOKEN_ENDPOINT = f"https://{AUTH0_DOMAIN}/oauth/token"
+OIDC_OP_USER_ENDPOINT = f"https://{AUTH0_DOMAIN}/userinfo"
+OIDC_RP_SCOPES = "openid profile email"
+OIDC_RP_SIGN_ALGO = "RS256"
+OIDC_RP_VERIFY_SSL = True
+LOGIN_REDIRECT_URL = "http://localhost:8000/openid_home"
+LOGOUT_REDIRECT_URL = "http://localhost:8000/openid_home"
+OIDC_RENEW_ID_TOKEN_EXPIRY_SECONDS = 60 * 60
+OIDC_OP_JWKS_ENDPOINT = f"https://{AUTH0_DOMAIN}/.well-known/jwks.json"
