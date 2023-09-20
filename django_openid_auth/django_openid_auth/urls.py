@@ -1,6 +1,7 @@
 import app.oauth as oauth
 import app.openid as openid
 import app.sms as sms
+import app.status as status
 from app.views import CustomerOrdersView
 from app.views import CustomersView
 from app.views import OrdersView
@@ -28,4 +29,5 @@ urlpatterns = [
     path("oidc/", include("mozilla_django_oidc.urls")),
     path("openid_home", openid.openid_index, name="openid_index"),
     path("sms", sms.send_sms, name="sms"),
+    path("status/", status.get_status, name="status"),
 ]
