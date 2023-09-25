@@ -49,7 +49,11 @@ def logout(request):
 
 
 def oauth_index(request):
-    session_user = json.dumps(request.session.get("user"), indent=4)
     return render(
-        request, "oauth.html", context={"session": session_user, "pretty": session_user}
+        request,
+        "oauth.html",
+        context={
+            "session": request.session.get("user"),
+            "pretty": json.dumps(request.session.get("user"), indent=4),
+        },
     )

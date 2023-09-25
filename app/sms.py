@@ -2,9 +2,10 @@
 import json
 
 import africastalking
-from app.models import Customer
 from django.conf import settings
 from django.http import HttpResponse
+
+from app.models import Customer
 
 africastalking.initialize(
     username=settings.AFRICASTALKING_USERNAME, api_key=settings.AFRICASTALKING_API_KEY

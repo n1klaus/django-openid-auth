@@ -1,3 +1,8 @@
+from django.contrib import admin
+from django.urls import include
+from django.urls import path
+from rest_framework.routers import DefaultRouter
+
 import app.oauth as oauth
 import app.openid as openid
 import app.sms as sms
@@ -5,10 +10,6 @@ import app.status as status
 from app.views import CustomerOrdersView
 from app.views import CustomersView
 from app.views import OrdersView
-from django.contrib import admin
-from django.urls import include
-from django.urls import path
-from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
 router.register(r"customers", CustomersView, basename="customers")

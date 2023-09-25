@@ -1,7 +1,5 @@
 import json
 
-import app.serializers as serializers
-from app.sms import notify_customer
 from django.conf import settings
 from django.core.exceptions import PermissionDenied
 from django.http import HttpRequest
@@ -11,8 +9,10 @@ from django.shortcuts import render
 from django.views import View
 from rest_framework import viewsets
 
+import app.serializers as serializers
 from .models import Customer
 from .models import Order
+from app.sms import notify_customer
 
 
 class CustomersView(viewsets.ModelViewSet):

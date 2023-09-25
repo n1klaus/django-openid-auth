@@ -2,9 +2,6 @@
 import json
 from unittest.mock import patch
 
-from app.openid import MyOpenIdConnectBackend
-from app.sms import notify_customer
-from app.sms import send_sms
 from django.contrib.auth.hashers import check_password
 from django.contrib.auth.models import User
 from django.test import Client
@@ -18,6 +15,9 @@ from .models import Customer
 from .models import Order
 from .serializers import CustomerViewSerializer
 from .serializers import OrderViewSerializer
+from app.openid import MyOpenIdConnectBackend
+from app.sms import notify_customer
+from app.sms import send_sms
 
 
 class BaseModelTestCase(TestCase):

@@ -10,10 +10,7 @@ logger = logging.getLogger(__name__)
 
 
 def openid_index(request):
-    user = request.session.get("user")
-    pretty_user = json.dumps(user, indent=4) if user else None
-    context = {"session": user, "pretty": pretty_user}
-    return render(request, "openid.html", context=context)
+    return render(request, "openid.html")
 
 
 class MyOpenIdConnectBackend(OIDCAuthenticationBackend):
